@@ -1,0 +1,81 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script>
+      function initialize() {
+  
+        /*
+          http://openapi.map.naver.com/api/geocode.php?key=f32441ebcd3cc9de474f8081df1e54e3&encoding=euc-kr&coord=LatLng&query=�뱸�߱����ε�1��
+  
+          ���� ��ũ���� �ڿ� �ּҸ� ������ x,y ���� ���Ҽ� �ֽ��ϴ�.
+        */
+        var Y_point			= 35.87110100714382;		// Y ��ǥ
+        var X_point			= 128.60169690333006;		// X ��ǥ
+  
+        var zoomLevel		= 17;						// ù �ε��� ���� ������ Ȯ�� ����
+  
+        var markerTitle		= "�뱸��û";				// ���� ��ġ ��Ŀ�� ���콺�� �÷����� ��Ÿ���� �̸�
+        var markerMaxWidth	= 300;						// ��Ŀ�� Ŭ�������� ��Ÿ���� ��ǳ���� �ִ� ũ��
+  
+        // ��ǳ�� ����
+        var contentString	= '<div id="content">' +
+        '<div id="siteNotice">' +
+        '</div>'+
+        '<h2 id="firstHeading" class="firstHeading">�뱸��û</h2>'+
+        '<div id="bodyContent">'+
+        '<p>�뱸������û(����������, Daegu Metropolitan City Hall)�� �뱸�������� ������ �Ѱ��ϴ� ����̴�.<br />' +
+        '<a href="http://www.daegu.go.kr" target="_blank">http://www.daegu.go.kr</a></p>'+
+        '</div>'+
+        '</div>';
+  
+        var myLatlng = new google.maps.LatLng(Y_point, X_point);
+        var mapOptions = {
+                  zoom: zoomLevel,
+                  center: myLatlng,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+  
+        var marker = new google.maps.Marker({
+                            position: myLatlng,
+                            map: map,
+                            title: markerTitle
+        });
+  
+        var infowindow = new google.maps.InfoWindow(
+                              {
+                                content: contentString,
+                                maxWidth: markerMaxWidth
+                              }
+        );
+  
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+    </script>
+</head>
+<body>
+	<h1>Hello world!</h1>
+	<!-- 찾아오는 길 -->
+    <section id="testimonials" class="section">
+   <div class="section__container">
+    <h1>찾아오는 길</h1>
+    <h3>서울특별시 강남구 역삼동 819-3 삼오빌딩 5-9층</h3>
+  
+      <div id="map_canvas"style="width:1200px; height:500px;"></div>
+      </div>
+    </div>
+   </div>
+    </section>
+
+
+	<P>The time on the server is ${serverTime}.</P>
+</body>
+</html>

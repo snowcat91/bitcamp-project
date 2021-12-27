@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+</head>
+<body>
+	<h1>Hello world!</h1>
+	<div class="item">
+		<div id="map" class="img"></div>
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ed7554724f09814c64853b5940f7fab"></script>
+		<script>
+			var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+			var options = { //지도를 생성할 때 필요한 기본 옵션
+				center : new kakao.maps.LatLng(37.160865, 127.754386), //지도의 중심좌표.
+				level : 13
+			//지도의 레벨(확대, 축소 정도)
+			};
+			var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+		</script>
+		<div class="info">
+			<h4 class="fn-font">미리보기3</h4>
+			<p class="fn-font">레벨의 디자인은 플레이어의 경험을 만드는 작업입니다. 이곳에는 아무말이나
+				채워넣어야만합니다. 그래야만 그럴듯해 보입니다. 더미 텍스트를 넣어봅시다.</p>
+			<div class="button-row">
+				<button class="btn fn-font btn-sm">더 알아보기</button>
+			</div>
+		</div>
+	</div>
+
+
+	<P>The time on the server is ${serverTime}.</P>
+</body>
+</html>

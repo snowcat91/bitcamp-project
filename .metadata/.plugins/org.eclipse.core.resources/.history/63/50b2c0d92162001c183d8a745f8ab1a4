@@ -1,0 +1,79 @@
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+	<!-- Navbar -->
+    <nav id="navbar">
+      <div class="navbar__logo">
+        <img  src="../resources/img/logo.png"  alt="Ellie's profile photo" class="home__a"/> 
+        <a href="#">kipping site</a>
+      </div>
+      <ul class="navbar__menu">
+      <c:if test="${member == null}">
+        <a href="/main"><li class="navbar__menu__item ">Home</li></a>
+				<a href="/member/login"><li class="navbar__menu__item">로그인</li></a>
+				<a href="/member/join"><li class="navbar__menu__item">회원가입</li></a>
+      </c:if>
+      
+      <c:if test="${member != null }">
+      	<c:if test="${member.adminCk == 1 }">
+      	<li class="navbar__menu__item "><a href="/admin/main">관리자 페이지</a></li>
+      	</c:if>
+      	<li class="navbar__menu__item active" data-link="#home">Home</li>
+        <li class="navbar__menu__item" ><a href="/board/list">게시판</li>
+        <li class="navbar__menu__item" ><a id="gnb_logout_button">로그아웃</a></li>
+      	<li class="navbar__menu__item" >
+               <c:choose>
+               <c:when test="${member.adminCk == 1 }">   
+                  <a href="/admin/goodsManage">키핑게시판</a>
+               </c:when>   
+               <c:otherwise>
+                  <a href="/board/goodsManage">키핑게시판</a>
+               </c:otherwise>
+               </c:choose>        
+      	</li>
+       </c:if>
+      </ul>
+      
+      <!-- Toggle button -->
+      <button class="navbar__toggle-btn">
+        <i class="fas fa-bars"></i>>
+      </button>
+    </nav>
+    <section id="home">
+      <div class="home__container" >
+        <img
+          src="resources/img/main.jpg"   
+          class="home__avatar"/> 
+        <h1 class="home__title">Hello, <br />We provide you with any alcohol you want.</h1>
+
+        <button class="home__contact">Contact Me</button>
+      	
+      </div>
+    </section>
+    
+       
+            <!-- top_subject_area -->
+            <div class="admin_top_wrap">
+                <span>관리자 페이지</span>
+                
+            </div>
+            <!-- contents-area -->
+            <div class="admin_wrap">
+                <!-- 네비영역 -->
+                <div class="admin_navi_wrap">
+	              <ul>
+	                  <li >
+	                      <a class="admin_list_01" href="/admin/goodsEnroll">키핑 등록</a>
+	                  </li>
+	                  <li>
+	                      <a class="admin_list_02" href="/admin/goodsManage">키핑 관리</a>
+	                  </li>
+	                  <lI>
+	                      <a class="admin_list_03" href="/admin/authorEnroll">손님 등록</a>                            
+	                  </lI>
+	                  <lI>
+	                      <a class="admin_list_04" href="/admin/authorManage">손님 관리</a>                            
+	                  </lI>
+	                                                                                                               
+	              </ul>
+                </div> 
