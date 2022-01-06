@@ -1,5 +1,7 @@
 # bitcamp project
  project files
+ 
+ ## 주류키핑 서비스 목적 기반으로 하여 상품등록,수정,삭제 및 커뮤니티 게시판 활용을 하여 고객과 소통을 
 --------------------------------------------------
 
 ![로그인](https://user-images.githubusercontent.com/88028283/147430163-8be89af3-2194-44be-902f-4edd4bac36f6.PNG)
